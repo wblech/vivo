@@ -1,0 +1,37 @@
+repos:
+    -   repo: https://github.com/pre-commit/pre-commit-hooks
+        rev: v3.1.0
+        hooks:
+        -   id: check-ast
+        -   id: check-byte-order-marker
+        -   id: check-case-conflict
+        -   id: check-executables-have-shebangs
+        -   id: check-json
+        -   id: check-merge-conflict
+        -   id: check-symlinks
+        -   id: check-xml
+        -   id: check-yaml
+        -   id: debug-statements
+        -   id: double-quote-string-fixer
+        -   id: end-of-file-fixer
+        -   id: forbid-new-submodules
+        -   id: no-commit-to-branch
+            args: [--branch, develop, --branch, master]
+        -   id: trailing-whitespace
+            args: [--markdown-linebreak-ext=md]
+    -   repo: https://gitlab.com/pycqa/flake8
+        rev: 3.8.1
+        hooks:
+        -   id: flake8
+            args: ['--ignore=E203,E231,E501,W503']
+    -   repo: https://github.com/asottile/reorder_python_imports
+        rev: v2.3.0
+        hooks:
+        -   id: reorder-python-imports
+            args: [--py3-plus]
+    -   repo: https://github.com/psf/black
+        rev: 19.10b0
+        hooks:
+        -   id: black
+            language_version: python3
+            args: [--skip-string-normalization]

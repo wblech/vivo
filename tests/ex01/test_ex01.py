@@ -1,6 +1,6 @@
 import pytest
 
-from vivo.get_an import get_an
+from vivo.ex01.get_an import get_an
 
 
 @pytest.fixture
