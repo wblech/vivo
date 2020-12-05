@@ -15,6 +15,16 @@ $ poetry shell
 $ cp local.env .env
 $ pre-commit install
 ```
+
+Você pode instalar também utilizando o pip, contudo, indicamos o poetry como mostrado acima
+````bash
+$ python -m venv .venv
+$ pip install -r requirements.txt  
+$ source .venv/bin/activate
+$ cp local.env .env
+$ pre-commit install
+````
+
 ## Testes e cobertura
 Para rodar os testes, execute:
 ```bash
