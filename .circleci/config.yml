@@ -46,7 +46,7 @@ jobs:
     - run:
         name: Pytest
         command: |
-          poetry run pytest -vvs --junitxml=test-results/pytest/results.xml --cov=dl_scanntech --cov-branch --cov-report=term-missing --cov-report=html:htmlcov
+          poetry run pytest -vvs --junitxml=test-results/pytest/results.xml --cov=vivo --cov-branch --cov-report=term-missing --cov-report=html:htmlcov
     - store_test_results:
         path: test-results
     - store_artifacts:
