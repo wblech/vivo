@@ -1,3 +1,4 @@
+from pathlib import Path
 from unittest.mock import patch
 
 import pandas as pd
@@ -14,7 +15,8 @@ from vivo.ex03.super_heroes import total_time_laps
 
 @pytest.fixture
 def file_path():
-    return 'tests/ex03/example/log_bug.csv'
+    parent_path = Path(__file__).parents[0]
+    return f'{parent_path}/example/log_bug.csv'
 
 
 @pytest.fixture
