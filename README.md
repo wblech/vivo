@@ -1,4 +1,4 @@
-# dl-scanntech
+# VIVO
 [![VIVO](https://circleci.com/gh/wblech/vivo.svg?style=svg)](https://app.circleci.com/pipelines/github/wblech/vivo)
 
 Resolução de exercicios referente ao processo seletivo da vivo
