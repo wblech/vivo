@@ -305,6 +305,88 @@ def expected_df_all_columns():
     return expected_result
 
 
+@pytest.fixture
+def expected_df_time(expected_df_all_columns):
+    df = pd.DataFrame(
+        {
+            'Tempo Volta': {
+                '002': '04:48:53',
+                '011': '01:47:16',
+                '015': '05:13:21',
+                '023': '04:44:42',
+                '033': '04:33:00',
+                '038': '04:51:58',
+            }
+        }
+    )
+    df.index.name = 'Codigo'
+    df['Tempo Volta'] = pd.to_timedelta(df['Tempo Volta'])
+    return df
+
+
+@pytest.fixture
+def expected_df_lap(expected_df_all_columns):
+    df = pd.DataFrame(
+        {'Nº Volta': {'002': 4, '011': 3, '015': 4, '023': 4, '033': 4, '038': 4}}
+    )
+    df.index.name = 'Codigo'
+    return df
+
+
+@pytest.fixture
+def expected_df_hero_lap(expected_df_all_columns):
+    df = pd.DataFrame(
+        {
+            'Melhor Volta': {
+                '002': '01:04:16',
+                '011': '00:19:37',
+                '015': '01:07:11',
+                '023': '01:07:36',
+                '033': '01:04:02',
+                '038': '01:05:50',
+            }
+        }
+    )
+    df['Melhor Volta'] = pd.to_timedelta(df['Melhor Volta'])
+    df.index.name = 'Codigo'
+    return df
+
+
+@pytest.fixture
+def expected_df_mean_velocity(expected_df_all_columns):
+    df = pd.DataFrame(
+        {
+            'Velocidade média da volta': {
+                '002': 43.627250000000004,
+                '011': 25.745666666666665,
+                '015': 38.06625,
+                '023': 43.191250000000004,
+                '033': 43.467999999999996,
+                '038': 44.24575,
+            }
+        }
+    )
+    df.index.name = 'Codigo'
+    return df
+
+
+@pytest.fixture
+def expected_df_names(expected_df_all_columns):
+    return pd.DataFrame(
+        {
+            'Codigo': {0: '038', 1: '033', 2: '002', 3: '023', 4: '015', 15: '011'},
+            'Nome': {
+                0: 'Superman',
+                1: 'Flash',
+                2: 'Mercúrio',
+                3: 'Sonic',
+                4: 'PAPALÉGUA',
+                15: 'GATOAJATO',
+            },
+        }
+    )
+
+
 @patch('vivo.ex03.super_heroes.get_exercise_result_info')
 @patch('vivo.ex03.super_heroes.remove_duplicated_name')
 @patch('vivo.ex03.super_heroes.total_time_laps')
@@ -350,81 +432,23 @@ def test_df_all_columns(file_path, expected_df_all_columns):
     pd.testing.assert_frame_equal(result, expected_df_all_columns)
 
 
-def test_total_time_laps(expected_df_all_columns):
-    expected_time = pd.DataFrame(
-        {
-            'Tempo Volta': {
-                '002': '04:48:53',
-                '011': '01:47:16',
-                '015': '05:13:21',
-                '023': '04:44:42',
-                '033': '04:33:00',
-                '038': '04:51:58',
-            }
-        }
-    )
-    expected_laps = pd.DataFrame(
-        {'Nº Volta': {'002': 4, '011': 3, '015': 4, '023': 4, '033': 4, '038': 4}}
-    )
-    expected_time.index.name = 'Codigo'
-    expected_laps.index.name = 'Codigo'
-    expected_time['Tempo Volta'] = pd.to_timedelta(expected_time['Tempo Volta'])
+def test_total_time_laps(expected_df_all_columns, expected_df_time, expected_df_lap):
     laps_result, time_result = total_time_laps(expected_df_all_columns)
-    pd.testing.assert_frame_equal(time_result, expected_time)
-    pd.testing.assert_frame_equal(laps_result, expected_laps)
+    pd.testing.assert_frame_equal(time_result, expected_df_time)
+    pd.testing.assert_frame_equal(laps_result, expected_df_lap)
 
 
-def test_bonus_info(expected_df_all_columns):
-    expected_hero_lap = pd.DataFrame(
-        {
-            'Melhor Volta': {
-                '002': '01:04:16',
-                '011': '00:19:37',
-                '015': '01:07:11',
-                '023': '01:07:36',
-                '033': '01:04:02',
-                '038': '01:05:50',
-            }
-        }
-    )
-    expected_hero_lap['Melhor Volta'] = pd.to_timedelta(
-        expected_hero_lap['Melhor Volta']
-    )
-    expected_mean_vel = pd.DataFrame(
-        {
-            'Velocidade média da volta': {
-                '002': 43.627250000000004,
-                '011': 25.745666666666665,
-                '015': 38.06625,
-                '023': 43.191250000000004,
-                '033': 43.467999999999996,
-                '038': 44.24575,
-            }
-        }
-    )
-    expected_hero_lap.index.name = 'Codigo'
-    expected_mean_vel.index.name = 'Codigo'
+def test_bonus_info(
+    expected_df_all_columns, expected_df_hero_lap, expected_df_mean_velocity
+):
     hero_lap_result, mean_vel_result = bonus_info(expected_df_all_columns)
-    pd.testing.assert_frame_equal(hero_lap_result, expected_hero_lap)
-    pd.testing.assert_frame_equal(mean_vel_result, expected_mean_vel)
+    pd.testing.assert_frame_equal(hero_lap_result, expected_df_hero_lap)
+    pd.testing.assert_frame_equal(mean_vel_result, expected_df_mean_velocity)
 
 
-def test_remove_duplicated_name(expected_df_all_columns):
-    expected_names = pd.DataFrame(
-        {
-            'Codigo': {0: '038', 1: '033', 2: '002', 3: '023', 4: '015', 15: '011'},
-            'Nome': {
-                0: 'Superman',
-                1: 'Flash',
-                2: 'Mercúrio',
-                3: 'Sonic',
-                4: 'PAPALÉGUA',
-                15: 'GATOAJATO',
-            },
-        }
-    )
+def test_remove_duplicated_name(expected_df_all_columns, expected_df_names):
     result = remove_duplicated_name(expected_df_all_columns)
-    pd.testing.assert_frame_equal(result, expected_names)
+    pd.testing.assert_frame_equal(result, expected_df_names)
 
 
 # def test_get_exercise_result_info()
