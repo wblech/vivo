@@ -1,0 +1,65 @@
+version: 2.1
+executors:
+  docker-executor:
+    docker:
+      - image: circleci/python:3.8.5
+jobs:
+  build:
+    executor: docker-executor
+    steps:
+    - checkout
+    - restore_cache:
+        keys:
+          - deps-{{ checksum "poetry.lock" }}
+    - run:
+        name: Install Dependencies
+        command: |
+          python -m venv .venv
+          poetry install
+    - save_cache:
+        key: deps-{{ checksum "poetry.lock" }}
+        paths:
+          - /home/circleci/.cache/pypoetry/virtualenvs
+    - run:
+        name: Set environments variables
+        command: |
+          mv local.env .env
+    - persist_to_workspace:
+          root: ~/
+          paths:
+            - project
+            - .cache
+  linters:
+    executor: docker-executor
+    steps:
+    - attach_workspace:
+        at: /home/circleci
+    - run:
+        name: Pre Commit
+        command: |
+          SKIP=no-commit-to-branch poetry run pre-commit run -a -v
+  test:
+    executor: docker-executor
+    steps:
+    - attach_workspace:
+        at: /home/circleci
+    - run:
+        name: Pytest
+        command: |
+          poetry run pytest -vvs --junitxml=test-results/pytest/results.xml --cov=dl_scanntech --cov-branch --cov-report=term-missing --cov-report=html:htmlcov
+    - store_test_results:
+        path: test-results
+    - store_artifacts:
+        path: htmlcov
+        destination: test-reports
+workflows:
+  version: 2
+  build_linters_test:
+    jobs:
+      - build
+      - linters:
+          requires:
+            - build
+      - test:
+          requires:
+            - linters
