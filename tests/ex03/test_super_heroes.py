@@ -16,7 +16,7 @@ from vivo.ex03.super_heroes import total_time_laps
 @pytest.fixture
 def file_path():
     parent_path = Path(__file__).parents[0]
-    return f'{parent_path}/example/log_bug.csv'
+    return f'{parent_path}/example/log.csv'
 
 
 @pytest.fixture

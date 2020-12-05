@@ -79,6 +79,6 @@ def parse_time_to_str(time):
 
 
 if __name__ == '__main__':
-    file = '/Users/Wblech/Desktop/vivo/tests/ex03/example/log_bug.csv'
+    file = '/tests/ex03/example/log.csv'
     teste = orchestrator(file)
     print(teste)
