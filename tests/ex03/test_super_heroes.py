@@ -5,14 +5,16 @@ import pytest
 
 from vivo.ex03.super_heroes import bonus_info
 from vivo.ex03.super_heroes import df_all_columns
+from vivo.ex03.super_heroes import get_exercise_result_info
 from vivo.ex03.super_heroes import orchestrator
+from vivo.ex03.super_heroes import parse_time_to_str
 from vivo.ex03.super_heroes import remove_duplicated_name
 from vivo.ex03.super_heroes import total_time_laps
 
 
 @pytest.fixture
 def file_path():
-    return './example/log_bug.csv'
+    return 'tests/ex03/example/log_bug.csv'
 
 
 @pytest.fixture
@@ -451,4 +453,25 @@ def test_remove_duplicated_name(expected_df_all_columns, expected_df_names):
     pd.testing.assert_frame_equal(result, expected_df_names)
 
 
-# def test_get_exercise_result_info()
+def test_get_exercise_result_info(
+    expected_final_dataframe,
+    expected_df_hero_lap,
+    expected_df_mean_velocity,
+    expected_df_names,
+    expected_df_lap,
+    expected_df_time,
+):
+    result = get_exercise_result_info(
+        expected_df_hero_lap,
+        expected_df_mean_velocity,
+        expected_df_names,
+        expected_df_lap,
+        expected_df_time,
+    )
+    pd.testing.assert_frame_equal(result, expected_final_dataframe)
+
+
+def test_parse_time_to_str():
+    time = '0 days 12:12:00'
+    result = parse_time_to_str(time)
+    assert result == '12:12:00'
