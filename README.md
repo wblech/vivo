@@ -124,5 +124,66 @@ Em seguida no REPL do python digite
 ```
 Você receberá esta resposta
 ```json
-'[{"Codigo":"033","Tempo Volta":"04:33:00","Nº Volta":4,"Nome":"Flash","Velocidade média da volta":43.468,"Melhor Volta":"01:04:02","Posição":1,"Melhor volta da corrida":"00:19:37"},{"Codigo":"023","Tempo Volta":"04:44:42","Nº Volta":4,"Nome":"Sonic","Velocidade média da volta":43.19125,"Melhor Volta":"01:07:36","Posição":2,"Melhor volta da corrida":"00:19:37"},{"Codigo":"002","Tempo Volta":"04:48:53","Nº Volta":4,"Nome":"Mercúrio","Velocidade média da volta":43.62725,"Melhor Volta":"01:04:16","Posição":3,"Melhor volta da corrida":"00:19:37"},{"Codigo":"038","Tempo Volta":"04:51:58","Nº Volta":4,"Nome":"Superman","Velocidade média da volta":44.24575,"Melhor Volta":"01:05:50","Posição":4,"Melhor volta da corrida":"00:19:37"},{"Codigo":"015","Tempo Volta":"05:13:21","Nº Volta":4,"Nome":"PAPALÉGUA","Velocidade média da volta":38.06625,"Melhor Volta":"01:07:11","Posição":5,"Melhor volta da corrida":"00:19:37"},{"Codigo":"011","Tempo Volta":"01:47:16","Nº Volta":3,"Nome":"GATOAJATO","Velocidade média da volta":25.7456666667,"Melhor Volta":"00:19:37","Posição":6,"Melhor volta da corrida":"00:19:37"}]'
+'[
+  {
+    "Codigo": "033",
+    "Tempo Volta": "04:33:00",
+    "Nº Volta": 4,
+    "Nome": "Flash",
+    "Velocidade média da volta": 43.468,
+    "Melhor Volta": "01:04:02",
+    "Posição": 1,
+    "Melhor volta da corrida": "00:19:37"
+  },
+  {
+    "Codigo": "023",
+    "Tempo Volta": "04:44:42",
+    "Nº Volta": 4,
+    "Nome": "Sonic",
+    "Velocidade média da volta": 43.19125,
+    "Melhor Volta": "01:07:36",
+    "Posição": 2,
+    "Melhor volta da corrida": "00:19:37"
+  },
+  {
+    "Codigo": "002",
+    "Tempo Volta": "04:48:53",
+    "Nº Volta": 4,
+    "Nome": "Mercúrio",
+    "Velocidade média da volta": 43.62725,
+    "Melhor Volta": "01:04:16",
+    "Posição": 3,
+    "Melhor volta da corrida": "00:19:37"
+  },
+  {
+    "Codigo": "038",
+    "Tempo Volta": "04:51:58",
+    "Nº Volta": 4,
+    "Nome": "Superman",
+    "Velocidade média da volta": 44.24575,
+    "Melhor Volta": "01:05:50",
+    "Posição": 4,
+    "Melhor volta da corrida": "00:19:37"
+  },
+  {
+    "Codigo": "015",
+    "Tempo Volta": "05:13:21",
+    "Nº Volta": 4,
+    "Nome": "PAPALÉGUA",
+    "Velocidade média da volta": 38.06625,
+    "Melhor Volta": "01:07:11",
+    "Posição": 5,
+    "Melhor volta da corrida": "00:19:37"
+  },
+  {
+    "Codigo": "011",
+    "Tempo Volta": "01:47:16",
+    "Nº Volta": 3,
+    "Nome": "GATOAJATO",
+    "Velocidade média da volta": 25.7456666667,
+    "Melhor Volta": "00:19:37",
+    "Posição": 6,
+    "Melhor volta da corrida": "00:19:37"
+  }
+]'
 ```
