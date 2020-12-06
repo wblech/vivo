@@ -22,3 +22,5 @@ test: ## Run tests
 
 test-cov: ## Run tests and create coverage report in HTML
 	pytest -x --cov=$(PROJECT) --cov-branch --cov-report=term-missing --cov-report=html:htmlcov
+
+.PHONY:	default help clean ex02 test test-cov

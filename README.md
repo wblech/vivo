@@ -35,7 +35,7 @@ Para rodar os testes e visualizar o relatório de cobertura, execute:
 $ make test-cov
 ```
 ## Exercício 01
-Para testar o exercício 01
+Para executar o exercício 01
 Digite no terminal
 ```bash
 python
@@ -45,7 +45,7 @@ Em seguida digite no REPL do python
 >>> from vivo.ex01.get_an import get_an
 >>> get_an([1,2,3,5,5,5,5])
 ```
-Você receberá um json como resposta
+Você receberá uma string como resposta
 ```json
 '{0: 0, 1: 1, 2: 1, 3: 1, 4: 0, 5: 4, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0}'
 ```
