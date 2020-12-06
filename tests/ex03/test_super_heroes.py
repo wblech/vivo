@@ -431,6 +431,13 @@ def test_orchestrator(
     )
 
 
+def test_orchestrator_wrong_input(caplog):
+    file_path = 'pasta/example/log.txt'
+    result = orchestrator(file_path)
+    assert result is None
+    assert 'Por favor, utilize apenas arquivos .CSV' in caplog.text
+
+
 def test_df_all_columns(file_path, expected_df_all_columns):
     result = df_all_columns(file_path)
     pd.testing.assert_frame_equal(result, expected_df_all_columns)
