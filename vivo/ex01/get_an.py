@@ -1,3 +1,4 @@
+import json
 import logging
 
 from vivo.config import settings
@@ -15,7 +16,7 @@ def get_an(num_list):
         num_list (list): Lista de inteiros do 0 ao 15
 
     Returns:
-        retorna uma string em formato de dicionário com a indicação de quantas vezes cada número aparece na lista
+        retorna uma string em formato de json com a indicação de quantas vezes cada número aparece na lista
     """
     try:
         record = {expected_num: 0 for expected_num in range(16)}
@@ -23,6 +24,6 @@ def get_an(num_list):
             if num < 0 or num > 15:
                 raise Exception('Number should be between 0 and 15')
             record[num] += 1
-        return str(record)
+        return json.dumps(record)
     except Exception as e:
         logger.error(e, exc_info=True)
