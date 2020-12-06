@@ -45,9 +45,10 @@ Em seguida digite no REPL do python
 >>> from vivo.ex01.get_an import get_an
 >>> get_an([1,2,3,5,5,5,5])
 ```
-Você receberá uma string como resposta
-```json
-'{0: 0, 1: 1, 2: 1, 3: 1, 4: 0, 5: 4, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0}'
+Você receberá uma string em formato json como resposta
+```python
+'{"0": 0, "1": 1, "2": 1, "3": 1, "4": 0, "5": 4, "6": 0, "7": 0, "8": 0, "9": 0, "10": 0, "11": 0, "12": 0, "13": 0, "14": 0, "15": 0}'
+
 ```
 ## Exercício 02
 Você pode subir a API com este comando no terminal
@@ -66,22 +67,22 @@ http://localhost:5000/?lista=1,5,5,5,5
 Você receberá um json na resposta
 ```json
 {
-  0: 0,
-  1: 1,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 4,
-  6: 0,
-  7: 0,
-  8: 0,
-  9: 0,
-  10: 0,
-  11: 0,
-  12: 0,
-  13: 0,
-  14: 0,
-  15: 0
+  "0": 0,
+  "1": 1,
+  "2": 0,
+  "3": 0,
+  "4": 0,
+  "5": 4,
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0,
+  "10": 0,
+  "11": 0,
+  "12": 0,
+  "13": 0,
+  "14": 0,
+  "15": 0
 }
 ```
 O nome do parâmetro não importa, bem como é
@@ -92,22 +93,22 @@ http://localhost:5000/?wincenty=1,5,5,5,5&lech=1,1,1,1,0,0,0,0
 Neste caso o retorno será este
 ````json
 {
-  0: 4,
-  1: 5,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 4,
-  6: 0,
-  7: 0,
-  8: 0,
-  9: 0,
-  10: 0,
-  11: 0,
-  12: 0,
-  13: 0,
-  14: 0,
-  15: 0
+  "0": 4,
+  "1": 5,
+  "2": 0,
+  "3": 0,
+  "4": 0,
+  "5": 4,
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0,
+  "10": 0,
+  "11": 0,
+  "12": 0,
+  "13": 0,
+  "14": 0,
+  "15": 0
 }
 ````
 ## Exercício 03
